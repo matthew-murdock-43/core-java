@@ -417,6 +417,7 @@ class Solution {
         int[] a = new int[26], b = new int[26];
         for (char c : word1.toCharArray()) a[c - 'a']++;
         for (char c : word2.toCharArray()) b[c - 'a']++;
+        //This checks that if a character appears in word1, it must also appear in word2, and vice versa.
         for (int i = 0; i < 26; i++) {
             if ((a[i] == 0) != (b[i] == 0)) return false;
         }
