@@ -421,6 +421,7 @@ class Solution {
         for (int i = 0; i < 26; i++) {
             if ((a[i] == 0) != (b[i] == 0)) return false;
         }
+        //Both strings must have the same frequency counts, ignoring which character has which count
         Arrays.sort(a);
         Arrays.sort(b);
         return Arrays.equals(a, b);
