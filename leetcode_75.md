@@ -269,6 +269,7 @@ class Solution {
         for (int i = 0; i < k; i++) sum += nums[i];
         long best = sum;
         for (int i = k; i < nums.length; i++) {
+            //Cannot move it inside the max comparision because sum stays as the first window’s sum forever
             sum += nums[i] - nums[i - k];
             best = Math.max(best, sum);
         }
