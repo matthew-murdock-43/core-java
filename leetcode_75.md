@@ -387,6 +387,7 @@ class Solution {
         for (int x : nums1) s1.add(x);
         for (int x : nums2) s2.add(x);
         List<Integer> a = new ArrayList<>(), b = new ArrayList<>();
+        // Iterating over s1 and s2 prevents adding duplicates if nums1 or nums2 contains repeated numbers.
         for (int x : s1) if (!s2.contains(x)) a.add(x);
         for (int x : s2) if (!s1.contains(x)) b.add(x);
         return Arrays.asList(a, b);
