@@ -248,6 +248,7 @@ class Solution {
             int need = k - x;
             if (map.getOrDefault(need, 0) > 0) {
                 ans++;
+                // Reduce the count of that need value by 1, because it has now been used in an operation.
                 map.put(need, map.get(need) - 1);
             } else {
                 map.put(x, map.getOrDefault(x, 0) + 1);
