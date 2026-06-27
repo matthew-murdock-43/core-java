@@ -1,6 +1,6 @@
-# 1. DFS traversal of graph
+## 1. DFS traversal of graph
 
-```
+``` java
 class Solution {
 	public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
 		ArrayList<Integer> res = new ArrayList<Integer>();
