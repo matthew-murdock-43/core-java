@@ -22,4 +22,32 @@ class Solution {
 	}
 }
 ```
+## 2. BFS traversal of graph
 
+``` java
+class Solution {
+	public ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj) {
+		Queue<Integer> q = new LinkedList<Integer>();
+		boolean[] vis = new boolean[adj.size()];
+		ArrayList<Integer> res = new ArrayList<Integer>();
+		vis[0] = true;
+		q.offer(0);
+		bfs(q, res, vis, adj);
+		return res;
+	}
+	
+	private void bfs(Queue<Integer> q, ArrayList<Integer> res, boolean[] vis, ArrayList<ArrayList<Integer>> adj) {
+		while (!q.isEmpty()) {
+			Integer node = q.poll();
+			res.add(node);
+			for (int neighbor : adj.get(node)) {
+				if (!vis[neighbor]) {
+					vis[neighbor] = true;
+					q.offer(neighbor);
+				}
+			}
+		}
+	}
+}
+
+```
