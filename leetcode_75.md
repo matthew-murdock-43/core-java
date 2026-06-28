@@ -906,21 +906,21 @@ class Solution {
 ```java
 class Solution {
     public int findCircleNum(int[][] isConnected) {
-        int n = isConnected.length, ans = 0;
-        boolean[] seen = new boolean[n];
+        int n = isConnected.length, res = 0;
+        boolean[] visited = new boolean[n];
         for (int i = 0; i < n; i++) {
-            if (!seen[i]) {
-                ans++;
-                dfs(isConnected, seen, i);
+            if (!visited[i]) {
+                res++;
+                dfs(isConnected, visited, i);
             }
         }
-        return ans;
+        return res;
     }
 
-    private void dfs(int[][] g, boolean[] seen, int u) {
-        seen[u] = true;
-        for (int v = 0; v < g.length; v++) {
-            if (g[u][v] == 1 && !seen[v]) dfs(g, seen, v);
+    private void dfs(int[][] isConnected, boolean[] visited, int node) {
+        visited[node] = true;
+        for (int neighbor = 0; neighbor < isConnected.length; neighbor++) {
+            if (isConnected[node][neighbor] == 1 && !visited[neighbor]) dfs(isConnected, visited, neighbor);
         }
     }
 }
