@@ -51,3 +51,28 @@ class Solution {
 }
 
 ```
+## 3a. Topological sorting using DFS
+```java
+class Solution{
+	public List<Integer> topologicalSorting(List<List<Integer>> dag){
+		boolean[] visited = new boolean[dag.size()];
+		Stack<Integer> st = new Stack<Integer>();
+		for(int i = 0; i<dag.size(); i++){
+			if(!visited[i]) dfs(dag, visited, i, st);
+		}
+		List<Integer> topo = new ArrayList<Integer>();
+		while(!st.isEmpty()){
+			topo.add(st.pop());
+		}
+		return topo;
+	}
+	
+	private void dfs(List<List<Integer>> dag, boolean[] visited, int node, Stack st){
+		visited[node]=true;
+		for(int neighbor : dag.get(node)){
+			if(!visited[neighbor]) dfs(dag, visited, neighbor, st); 
+		}
+		st.push(node);
+	}
+}
+```
