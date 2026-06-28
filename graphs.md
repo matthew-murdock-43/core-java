@@ -56,7 +56,7 @@ class Solution {
 class Solution{
 	public List<Integer> topologicalSorting(List<List<Integer>> dag){
 		boolean[] visited = new boolean[dag.size()];
-		Stack<Integer> st = new Stack<Integer>();
+		Deque<Integer> st = new ArrayDeque<>();
 		for(int i = 0; i<dag.size(); i++){
 			if(!visited[i]) dfs(dag, visited, i, st);
 		}
@@ -67,7 +67,7 @@ class Solution{
 		return topo;
 	}
 	
-	private void dfs(List<List<Integer>> dag, boolean[] visited, int node, Stack st){
+	private void dfs(List<List<Integer>> dag, boolean[] visited, int node, Deque<Integer> st){
 		visited[node]=true;
 		for(int neighbor : dag.get(node)){
 			if(!visited[neighbor]) dfs(dag, visited, neighbor, st); 
