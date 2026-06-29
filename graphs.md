@@ -78,5 +78,42 @@ class Solution{
 ```
 ## 3b. Topological sorting using BFS (Kahn's algorithm)
 ```java
+class Solution {
+    public ArrayList<Integer> topoSort(int V, int[][] edges) {
+        //build an adjacency list from given edges
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
+        for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
+
+        int[] inDegree = new int[V];
+
+        for (int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            adj.get(u).add(v);
+            inDegree[v]++;
+        }
+
+        Queue<Integer> q = new LinkedList<>();
+
+        for (int i = 0; i < V; i++) {
+            if (inDegree[i] == 0)
+                q.offer(i);
+        }
+
+        ArrayList<Integer> res = new ArrayList<>();
+
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            res.add(node);
+
+            for (int it : adj.get(node)) {
+                inDegree[it]--;
+                if (inDegree[it] == 0)
+                    q.offer(it);
+            }
+        }
+        return res;
+    }
+}
 ```
