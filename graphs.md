@@ -118,3 +118,56 @@ class Solution {
     }
 }
 ```
+## 4a. Detect cycle in an undirected graph using BFS
+```java
+record Pair(int first, int second) {}
+
+class Solution {
+    public boolean isCycle(int V, int[][] edges) {
+        boolean[] vis = new boolean[V];
+        //build an adjacency list from edges
+        List<List<Integer>> adj = new ArrayList<>();
+        
+        for (int i = 0; i < V; i++){
+            adj.add(new ArrayList<>());
+        }
+        
+        for(int[] edge : edges){
+            int u = edge[0];
+            int v = edge[1];
+            adj.get(u).add(v);
+            adj.get(v).add(u);
+        }
+
+        for (int i = 0; i < V; i++) {
+            if (!vis[i] && checkForCycle(i, vis, adj))
+                return true;
+        }
+
+        return false;
+    }
+
+    private boolean checkForCycle(int src, boolean[] vis, List<List<Integer>> adj) {
+        Queue<Pair> q = new LinkedList<>();
+        vis[src] = true;
+        q.offer(new Pair(src, -1));
+
+        while (!q.isEmpty()) {
+            Pair curr = q.poll();
+            int node = curr.first();
+            int parent = curr.second();
+
+            for (int adjacentNode : adj.get(node)) {
+                if (!vis[adjacentNode]) {
+                    vis[adjacentNode] = true;
+                    q.offer(new Pair(adjacentNode, node));
+                } else if (adjacentNode != parent) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+```
