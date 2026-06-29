@@ -11,9 +11,9 @@ A tree is a graph with:
 - Height = longest path from root to leaf
 - Depth = distance from root
 
-**Preorder**: Root → Left → Right; Use when root decision comes first.
-**Inorder**: Left → Root → Right; Use mostly in BST problems.
-**Postorder**: Left → Right → Root; Use when child information is needed before parent.
+- **Preorder**: Root → Left → Right; Use when root decision comes first.
+- **Inorder**: Left → Root → Right; Use mostly in BST problems.
+- **Postorder**: Left → Right → Root; Use when child information is needed before parent.
 
 Almost every tree problem can be solved by asking:
 
