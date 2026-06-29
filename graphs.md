@@ -108,6 +108,7 @@ class Solution {
             res.add(node);
 
             for (int it : adj.get(node)) {
+				//decrease inDegree of the neighbors of the node
                 inDegree[it]--;
                 if (inDegree[it] == 0)
                     q.offer(it);
