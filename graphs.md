@@ -171,3 +171,40 @@ class Solution {
     }
 }
 ```
+## 4b. Detect cycle in an undirected graph using DFS
+```java
+class Solution {
+    public boolean isCycle(int V, int[][] edges) {
+        boolean[] vis = new boolean[V];
+
+		//create an adjacency list
+        List<List<Integer>> adj = new ArrayList<>();
+        for(int i = 0; i<V; i++) adj.add(new ArrayList<>());
+        
+        for(int[] edge : edges){
+            int u = edge[0];
+            int v = edge[1];
+            adj.get(u).add(v);
+            adj.get(v).add(u);
+        }
+        
+        for(int i = 0; i<V; i++){
+            if(!vis[i] && dfs(i, -1, adj, vis)) return true;
+        }
+        
+        return false;
+    }
+    
+    private boolean dfs(int node, int parent, List<List<Integer>> adj, boolean[] vis){
+        vis[node] = true;
+        for(int adjacentNode : adj.get(node)){
+            if(!vis[adjacentNode]){
+                if(dfs(adjacentNode, node, adj, vis)==true) return true; 
+            } 
+            //check adjacentNode != parent only when the adjacent node has already been visited
+            else if(adjacentNode!=parent) return true;
+        }
+        return false;
+    }
+}
+```
