@@ -60,9 +60,12 @@ class Solution{
 	public List<Integer> topologicalSorting(List<List<Integer>> dag){
 		boolean[] visited = new boolean[dag.size()];
 		Deque<Integer> st = new ArrayDeque<>();
+
+		//looping through the visited array because a directed graph may not be connected
 		for(int i = 0; i<dag.size(); i++){
 			if(!visited[i]) dfs(dag, visited, i, st);
 		}
+
 		List<Integer> topo = new ArrayList<Integer>();
 		while(!st.isEmpty()){
 			topo.add(st.pop());
@@ -75,6 +78,7 @@ class Solution{
 		for(int neighbor : dag.get(node)){
 			if(!visited[neighbor]) dfs(dag, visited, neighbor, st); 
 		}
+		//a node is pushed only after every node reachable from it has already been pushed.
 		st.push(node);
 	}
 }
