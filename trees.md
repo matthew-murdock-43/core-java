@@ -20,6 +20,22 @@ Almost every tree problem can be solved by asking:
 
 This single idea solves most Medium/Hard tree problems.
 
+## 0a. Height of a tree
+```java
+Class Solution{
+    int height(TreeNode root) {
+
+    if(root == null)
+        return 0;
+
+    int left = height(root.left);
+    int right = height(root.right);
+
+    return 1 + Math.max(left, right);
+}
+}
+```
+
 ## 1. Breadth First Search (Level Order) traversal
 ```java
 class Solution {
