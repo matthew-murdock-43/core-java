@@ -53,6 +53,8 @@ class Solution {
 
 ```
 ## 3a. Topological sorting using DFS
+
+Topological Sorting: Linear ordering of vertices such that if there is an edge between nodes _u_ and _v_, _u_ will appear before _v_ in the ordering 
 ```java
 class Solution{
 	public List<Integer> topologicalSorting(List<List<Integer>> dag){
