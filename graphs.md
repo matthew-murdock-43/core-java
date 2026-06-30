@@ -149,6 +149,7 @@ class Solution {
             adj.get(v).add(u);
         }
 
+		//loop through vis to check all the nodes in case of disconneted graph
         for (int i = 0; i < V; i++) {
             if (!vis[i] && checkForCycle(i, vis, adj))
                 return true;
