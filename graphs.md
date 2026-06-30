@@ -162,8 +162,9 @@ class Solution {
     }
 
     private boolean checkForCycle(int src, boolean[] vis, List<List<Integer>> adj) {
-        Queue<Pair> q = new LinkedList<>();
-        vis[src] = true;
+		vis[src] = true;
+		
+		Queue<Pair> q = new LinkedList<>();
         q.offer(new Pair(src, -1));
 
         while (!q.isEmpty()) {
