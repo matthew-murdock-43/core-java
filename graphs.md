@@ -1,5 +1,6 @@
 ## 1. DFS traversal of graph
 
+Idea: Maintain a list of visited nodes, start dfs with root node 0. DFS traversal - mark node as visited and add it to the result
 ``` java
 class Solution {
     public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
