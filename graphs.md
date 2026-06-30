@@ -2,24 +2,20 @@
 
 ``` java
 class Solution {
-	public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
-		ArrayList<Integer> res = new ArrayList<Integer>();
-		int v = adj.size();
-		boolean[] vis = new boolean[v];
-		vis[0] = true;
-		dfs(0, vis, adj, res);
-		return res;
-	}
-	
-	private void dfs(int node, boolean[] vis, ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> res) {
-		vis[node] = true;
-		res.add(node);
-		for (Integer num : adj.get(node)) {
-			if (!vis[num]) {
-				dfs(num, vis, adj, res);
-			}
-		}
-	}
+    public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
+        boolean[] visited = new boolean[adj.size()];
+        ArrayList<Integer> res = new ArrayList<>();
+        dfs(0, res, visited, adj);
+        return res;
+    }
+    
+    private void dfs(int node, ArrayList<Integer> res, boolean[] visited, ArrayList<ArrayList<Integer>> adj){
+        visited[node]=true;
+        res.add(node);
+        for(Integer adjacentNode : adj.get(node)){
+            if(!visited[adjacentNode]) dfs(adjacentNode, res, visited, adj);
+        }
+    }
 }
 ```
 ## 2. BFS traversal of graph
