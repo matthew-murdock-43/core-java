@@ -35,7 +35,31 @@ Class Solution{
 }
 }
 ```
+## 0b. Diameter of a tree
 
+**Diameter**: Longest path between any two nodes
+
+```java
+class Solution {
+    int diameter = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root == null) return 0;
+        computeHeight(root);
+        return diameter;
+    }
+
+    private int computeHeight(TreeNode node){
+        if(node == null) return 0;
+
+        int left = computeHeight(node.left);
+        int right = computeHeight(node.right);
+
+        diameter = Math.max(diameter, left+right);
+
+        return 1+Math.max(left, right);
+    }
+}
+```
 ## 1. Breadth First Search (Level Order) traversal
 ```java
 class Solution {
