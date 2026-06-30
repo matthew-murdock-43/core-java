@@ -132,6 +132,8 @@ class Solution {
 }
 ```
 ## 4a. Detect cycle in an undirected graph using BFS
+
+Queue<Pair> of node, parentNode; 
 ```java
 record Pair(int first, int second) {}
 
@@ -187,6 +189,8 @@ class Solution {
 }
 ```
 ## 4b. Detect cycle in an undirected graph using DFS
+
+dfs(node, parentNode, xx, xx)
 ```java
 class Solution {
     public boolean isCycle(int V, int[][] edges) {
