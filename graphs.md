@@ -88,6 +88,9 @@ class Solution{
 ## 3b. Topological sorting using BFS (Kahn's algorithm)
 Idea: Maintain an array of inDegree frequency. Reduce it everytime you visit and when it becomes zero, you add it to the queue. Loop through the queue, add the polled node to the res. Now loop through the adjacent nodes and reduce the inDegree. If it's inDegree == 0, add it to the queue.
 ```java
+/*
+  note: this algorithm does not require the usage of visited array
+*/
 class Solution {
     public ArrayList<Integer> topoSort(int V, int[][] edges) {
         //build an adjacency list from given edges
