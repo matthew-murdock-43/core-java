@@ -21,14 +21,18 @@ class Solution {
 ```
 ## 2. BFS traversal of graph
 
+Idea: Maintain a list of visited nodes along with a queue. Add the root node 0 and mark it as visited. Traverse through the queue till it is empty, adding the neighbor/adjacent nodes along the way.
 ``` java
 class Solution {
 	public ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj) {
 		Queue<Integer> q = new LinkedList<Integer>();
 		boolean[] vis = new boolean[adj.size()];
-		ArrayList<Integer> res = new ArrayList<Integer>();
-		vis[0] = true;
+
 		q.offer(0);
+		vis[0] = true;
+
+		ArrayList<Integer> res = new ArrayList<Integer>();
+
 		bfs(q, res, vis, adj);
 		return res;
 	}
