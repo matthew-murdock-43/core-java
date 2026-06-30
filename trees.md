@@ -13,6 +13,7 @@ A tree is a graph with:
 - **Preorder**: Root → Left → Right; Use when root decision comes first.
 - **Inorder**: Left → Root → Right; Use mostly in BST problems.
 - **Postorder**: Left → Right → Root; Use when child information is needed before parent.
+- **Binary Search Trees**: Left < Root < Right (Inorder traversal gives sorted order)
 
 Almost every tree problem can be solved by asking:
 
@@ -22,7 +23,7 @@ This single idea solves most Medium/Hard tree problems.
 
 ## 0a. Height of a tree
 ```java
-Class Solution{
+class Solution{
     int height(TreeNode root) {
 
     if(root == null)
@@ -57,6 +58,21 @@ class Solution {
         diameter = Math.max(diameter, left+right);
 
         return 1+Math.max(left, right);
+    }
+}
+```
+## 0c. Validate BST
+```java
+class Solution{
+    boolean validate(TreeNode node, long min, long max) {
+
+    if(node == null)
+        return true;
+
+    if(node.val <= min || node.val >= max)
+        return false;
+
+    return validate(node.left, min, node.val) && validate(node.right, node.val, max);
     }
 }
 ```
@@ -122,6 +138,64 @@ class Solution {
             depth++;
         }
         return depth;
+    }
+}
+```
+## 4. Balanced Binary Tree
+```java
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        return computeBalanced(root)!=-1;
+    }
+
+    private int computeBalanced(TreeNode node){
+        if(node == null) return 0;
+
+        int left = computeBalanced(node.left);
+        if(left == -1) return -1;
+
+        int right = computeBalanced(node.right);
+        if(right == -1) return -1;
+
+        if(Math.abs(left-right)>1) return -1;
+
+        return 1+Math.max(left, right);
+    } 
+}
+```
+## 5. Lowest Common Ancestor
+```java
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null || root == p || root == q){
+            return root;
+        } 
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if(left == null) return right;
+        else if(right == null) return left;
+        else return root;
+    }
+}
+```
+## 6. Path Sum III
+```java
+class Solution {
+    public int pathSum(TreeNode root, int targetSum) {
+        Map<Long, Integer> map = new HashMap();
+        map.put(0L, 1);
+        return dfs(root, targetSum, 0L, map);
+    }
+    private int dfs(TreeNode node, int target, long sum, Map<Long, Integer> map){
+        if(node == null) return 0;
+        sum+=node.val;
+        int ans = map.getOrDefault(sum-target, 0);
+        map.put(sum, map.getOrDefault(sum, 0)+1);
+        ans+=dfs(node.left, target, sum, map);
+        ans+=dfs(node.right, target, sum, map);
+        map.put(sum, map.get(sum)-1);
+        return ans;
+
     }
 }
 ```
