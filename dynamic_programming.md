@@ -49,3 +49,35 @@ class Solution {
     }
 }
 ```
+## iii. Tabulation
+```java
+class Solution {
+	public int knapsack(int W, int val[], int wt[]) {
+		//initialize the matrix
+		int n = val.length;
+		int[][] t = new int[n + 1][W + 1];
+		
+		//not needed, as Java assigns zero values
+		/* for (int i = 0; i<n + 1; i++) {
+			for (int j = 0; j<W + 1; j++) {
+				t[i][j] = 0;
+			}
+		}
+		*/
+		
+		for (int i = 1; i<n + 1; i++) {
+			for (int j = 1; j<W + 1; j++) {
+				if (wt[i - 1] <= j) {
+					t[i][j] = Math.max(val[i - 1]+t[i - 1][j - wt[i - 1]], t[i - 1][j]);
+				}
+				else {
+					t[i][j] = t[i - 1][j];
+				}
+				
+			}
+		}
+		return t[n][W];
+	}
+}
+
+```
