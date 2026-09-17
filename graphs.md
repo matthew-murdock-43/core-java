@@ -31,7 +31,7 @@ class Solution {
 }
 
 ```
-## 2a, DFS traversal of graph - Iterative
+## 2a. DFS traversal of graph - Iterative
 
 Idea: Use stack instead of Queue above
 ``` java
