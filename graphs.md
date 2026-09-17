@@ -1,25 +1,4 @@
-## 1. DFS traversal of graph
-
-Idea: Maintain a list of visited nodes, start dfs with root node 0. DFS traversal - mark node as visited and add it to the result
-``` java
-class Solution {
-    public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
-        boolean[] visited = new boolean[adj.size()];
-        ArrayList<Integer> res = new ArrayList<>();
-        dfs(0, res, visited, adj);
-        return res;
-    }
-    
-    private void dfs(int node, ArrayList<Integer> res, boolean[] visited, ArrayList<ArrayList<Integer>> adj){
-        visited[node]=true;
-        res.add(node);
-        for(Integer adjacentNode : adj.get(node)){
-            if(!visited[adjacentNode]) dfs(adjacentNode, res, visited, adj);
-        }
-    }
-}
-```
-## 2. BFS traversal of graph
+## 1. BFS traversal of graph
 
 Idea: Maintain a list of visited nodes along with a queue. Add the root node 0 and mark it as visited. Traverse through the queue till it is empty, adding the neighbor/adjacent nodes along the way.
 ``` java
@@ -52,6 +31,62 @@ class Solution {
 }
 
 ```
+## 2a, DFS traversal of graph - Iterative
+
+Idea: Use stack instead of Queue above
+``` java
+class Solution {
+	public ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj) {
+		Stack<Integer> stack = new ArrayDeque<Integer>();
+		boolean[] vis = new boolean[adj.size()];
+
+		stack.offer(0);
+		vis[0] = true;
+
+		ArrayList<Integer> res = new ArrayList<Integer>();
+
+		bfs(stack, res, vis, adj);
+		return res;
+	}
+	
+	private void bfs(Stack<Integer> stack, ArrayList<Integer> res, boolean[] vis, ArrayList<ArrayList<Integer>> adj) {
+		while (!stack.isEmpty()) {
+			Integer node = stack.poll();
+			res.add(node);
+			for (int neighbor : adj.get(node)) {
+				if (!vis[neighbor]) {
+					vis[neighbor] = true;
+					stack.offer(neighbor);
+				}
+			}
+		}
+	}
+}
+
+```
+
+
+## 2b. DFS traversal of graph - Recursive
+
+Idea: Maintain a list of visited nodes, start dfs with root node 0. DFS traversal - mark node as visited and add it to the result
+``` java
+class Solution {
+    public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
+        boolean[] visited = new boolean[adj.size()];
+        ArrayList<Integer> res = new ArrayList<>();
+        dfs(0, res, visited, adj);
+        return res;
+    }
+    
+    private void dfs(int node, ArrayList<Integer> res, boolean[] visited, ArrayList<ArrayList<Integer>> adj){
+        visited[node]=true;
+        res.add(node);
+        for(Integer adjacentNode : adj.get(node)){
+            if(!visited[adjacentNode]) dfs(adjacentNode, res, visited, adj);
+        }
+    }
+}
+
 ## 3a. Topological sorting using DFS
 
 Topological Sorting: Linear ordering of vertices such that if there is an edge between nodes _u_ and _v_, _u_ will appear before _v_ in the ordering
