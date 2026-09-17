@@ -36,27 +36,27 @@ class Solution {
 Idea: Use stack instead of Queue above
 ``` java
 class Solution {
-	public ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj) {
-		Stack<Integer> stack = new ArrayDeque<Integer>();
+	public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
+		Deque<Integer> stack = new ArrayDeque<>();
 		boolean[] vis = new boolean[adj.size()];
 
-		stack.offer(0);
+		stack.push(0);
 		vis[0] = true;
 
 		ArrayList<Integer> res = new ArrayList<Integer>();
 
-		bfs(stack, res, vis, adj);
+		dfs(stack, res, vis, adj);
 		return res;
 	}
 	
-	private void bfs(Stack<Integer> stack, ArrayList<Integer> res, boolean[] vis, ArrayList<ArrayList<Integer>> adj) {
+	private void dfs(Deque<Integer> stack, ArrayList<Integer> res, boolean[] vis, ArrayList<ArrayList<Integer>> adj) {
 		while (!stack.isEmpty()) {
-			Integer node = stack.poll();
+			Integer node = stack.pop();
 			res.add(node);
 			for (int neighbor : adj.get(node)) {
 				if (!vis[neighbor]) {
 					vis[neighbor] = true;
-					stack.offer(neighbor);
+					stack.push(neighbor);
 				}
 			}
 		}
