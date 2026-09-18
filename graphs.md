@@ -262,3 +262,58 @@ class Solution {
     }
 }
 ```
+## 5. Rotten Oranges
+```
+class Solution {
+    public int orangesRotting(int[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+
+        Queue<int[]> q = new LinkedList<>();
+
+        int fresh = 0, minutes = 0;
+
+        int[][] directions = new int[][]{
+            {-1,0},
+            {1,0},
+            {0,1},
+            {0,-1}
+        };
+
+        // count the fresh oranges and add the rotten oranges to the queue
+        for(int r = 0; r < rows ; r++){
+            for(int c = 0; c < cols; c++){
+                if(grid[r][c]==1) fresh++;
+                else if(grid[r][c]==2) q.offer(new int[]{r,c});
+            }
+        }
+
+        // traverse the queue and for the neighbors of rotten oranges, 
+        // reduce the count of fresh and make the orange rotten
+        while(!q.isEmpty() && fresh>0){
+            int size = q.size();
+            for(int i = 0; i<size; i++){
+                int current[] = q.poll();
+                int r = current[0];
+                int c = current[1];
+                for(int[] direction : directions){
+                    int nr = r + direction[0];
+                    int nc = c + direction[1];
+
+                    if(nr>=0 && nr<rows &&
+                          nc>=0 && nc<cols &&
+                          grid[nr][nc] == 1
+                    ){
+                        fresh--;
+                        grid[nr][nc] == 2;
+                        q.offer(new int[]{nr, nc});
+                    }
+                }
+            
+            }
+                minutes++;
+            }
+            return fresh == 0 ? minutes : -1;
+        }
+}
+```
