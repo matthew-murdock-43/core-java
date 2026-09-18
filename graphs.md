@@ -264,6 +264,7 @@ class Solution {
 ```
 ## 5. Rotten Oranges
 
+Idea: BFS (w/o visit[])
 ```
 class Solution {
     public int orangesRotting(int[][] grid) {
