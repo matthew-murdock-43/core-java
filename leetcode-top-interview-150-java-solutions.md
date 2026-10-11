@@ -711,15 +711,17 @@ class Solution {
 ```java
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int[] next = new int[128];
-        int left = 0, best = 0;
-        for (int right = 0; right < s.length(); right++) {
-            char c = s.charAt(right);
-            left = Math.max(left, next[c]);
-            best = Math.max(best, right - left + 1);
-            next[c] = right + 1;
+        Set<Character> set = new HashSet<>();
+        int res = 0, left = 0;
+        for(int right = 0; right<s.length(); right++){
+            while(set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
+            }
+            set.add(s.charAt(right));
+            res = Math.max(res, right - left + 1);
         }
-        return best;
+        return res;
     }
 }
 ```
