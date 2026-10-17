@@ -482,19 +482,19 @@ class Solution {
 ```java
 class Solution {
     public String convert(String s, int numRows) {
-        if (numRows == 1 || numRows >= s.length()) return s;
-        List<StringBuilder> rows = new ArrayList<>();
-        for (int i = 0; i < numRows; i++) rows.add(new StringBuilder());
-        int row = 0, step = 1;
-        for (char c : s.toCharArray()) {
-            rows.get(row).append(c);
-            if (row == 0) step = 1;
-            else if (row == numRows - 1) step = -1;
-            row += step;
+        if(numRows == 1 || numRows>s.length()) return s;
+        StringBuilder[] res = new StringBuilder[numRows];
+        for(int i = 0; i<numRows; i++) res[i] = new StringBuilder();
+        int currentRow = 0;
+        boolean goingDown = false;
+        for(int i = 0; i<s.length(); i++){
+            res[currentRow].append(s.charAt(i));
+            if(currentRow == 0 || currentRow == numRows-1) goingDown=!goingDown;
+            currentRow += goingDown ? 1 : -1;
         }
-        StringBuilder ans = new StringBuilder();
-        for (StringBuilder part : rows) ans.append(part);
-        return ans.toString();
+        StringBuilder result = new StringBuilder();
+        for(int i = 0; i<numRows; i++) result.append(res[i]);
+        return result.toString();
     }
 }
 ```
