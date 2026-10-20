@@ -344,25 +344,6 @@ Auction countdown demo
 <img width="726" height="303" alt="image" src="https://github.com/user-attachments/assets/5aa2f91a-4396-452c-92ee-016aa180cb07" />
 <img width="723" height="304" alt="image" src="https://github.com/user-attachments/assets/080b8399-acfc-4d1e-8005-d46cb4555873" />
 
-
-Active
-
-Time remaining
-
-# 8s
-
-Highest bid
-
-# $100
-
-Illustrative rule: a successful bid in the final 5 seconds adds 5 seconds.
-
-Place bid of $110
-
-Advance 1 secondJump to final 2sClose auction
-
-0 accepted simulated bids Reset
-
 The demo illustrates the countdown behavior, but a production system must use server-side deadlines and a durable state transition.
 
 ### How I'd implement it
