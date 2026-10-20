@@ -349,6 +349,10 @@ Our system needs to handle this without trusting client-side countdown timers.
 
 Auction countdown demo
 
+<img width="726" height="303" alt="image" src="https://github.com/user-attachments/assets/5aa2f91a-4396-452c-92ee-016aa180cb07" />
+<img width="723" height="304" alt="image" src="https://github.com/user-attachments/assets/080b8399-acfc-4d1e-8005-d46cb4555873" />
+
+
 Active
 
 Time remaining
