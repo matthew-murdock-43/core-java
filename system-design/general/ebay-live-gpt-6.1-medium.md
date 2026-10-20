@@ -369,6 +369,8 @@ I'd use delayed events or a scheduler as a wake-up mechanism, not as the authori
 
 ## 9. Video streaming architecture
 
+<img width="729" height="329" alt="image" src="https://github.com/user-attachments/assets/a2165742-af65-4818-a9ac-4f48d4528d4e" />
+
 Video is fundamentally different from bidding.
 
 I would choose:
