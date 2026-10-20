@@ -74,6 +74,8 @@ For bidding, 50,000 bids per second is substantial, but the distribution matters
 
 ## 3. High-level architecture
 
+<img width="650" height="650" alt="image" src="https://github.com/user-attachments/assets/58c3b140-444a-4bb7-a677-243c10a15a35" />
+
 Conceptual architecture. The actual streaming and bidding data paths are separate; this diagram combines them for discussion.
 
 We can divide the system into three independently scalable layers:
