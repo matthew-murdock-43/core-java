@@ -337,14 +337,6 @@ This is another excellent interview deep dive.
 
 eBay Live supports short auctions and optional extended bidding. Its published US FAQ describes a five-second extension triggered by late bids, although exact rules can vary by market and auction format.&#x20;
 
-[image](https://www.google.com/s2/favicons?domain=https://www.ebay.com\&sz=32)
-
-eBay
-
-+2
-
-
-
 Our system needs to handle this without trusting client-side countdown timers.
 
 Auction countdown demo
