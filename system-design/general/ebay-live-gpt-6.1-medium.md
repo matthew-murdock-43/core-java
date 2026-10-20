@@ -267,6 +267,8 @@ This works well with relatively low contention, but a hot auction can cause many
 
 ### Approach C: Single-writer bid engine per auction
 
+<img width="723" height="411" alt="image" src="https://github.com/user-attachments/assets/b4f545dd-4219-4633-bc67-e176bdbdc9fa" />
+
 For higher scale, I would explore a logical single-writer model.
 
 We route requests for the same `auctionId` to the same logical processor. This allows us to serialize bids without requiring distributed locks for every request.
