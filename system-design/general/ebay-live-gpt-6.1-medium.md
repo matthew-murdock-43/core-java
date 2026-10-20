@@ -80,11 +80,11 @@ Conceptual architecture. The actual streaming and bidding data paths are separat
 
 We can divide the system into three independently scalable layers:
 
-Video plane: Ingest streams, transcode into adaptive bitrates, and deliver via CDN using HLS or low-latency HLS.
+**1. Video plane**: Ingest streams, transcode into adaptive bitrates, and deliver via CDN using HLS or low-latency HLS.
 
-Auction control plane: Create auctions, validate bids, determine winners, manage timers, and trigger settlement.
+**2. Auction control plane**: Create auctions, validate bids, determine winners, manage timers, and trigger settlement.
 
-Real-time communication plane: Maintain WebSocket connections, deliver bid updates, synchronize countdowns, and handle live chat.
+**3. Real-time communication plane**: _Maintain WebSocket connections_, _deliver bid updates_, _synchronize countdowns_, and _handle live chat_.
 
 The next step is designing the most important path: placing a bid correctly under heavy concurrency.
 
