@@ -435,6 +435,17 @@ class Solution {
 }
 ```
 
+OR - O(n) and O(n)
+
+```java
+class Solution {
+    public int lengthOfLastWord(String s) {
+        String[] str = s.trim().split("\\s+");
+        return str[str.length-1].length();
+    }
+}
+```
+
 ### 20. Longest Common Prefix (LC 14)
 
 **Idea:** Shrink the first string until every other string starts with it.  
