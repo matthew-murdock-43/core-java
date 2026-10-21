@@ -291,7 +291,7 @@ class Solution {
 
 ### 14. Gas Station (LC 134)
 
-**Idea:** A negative running tank invalidates every start since the previous reset; total gas decides feasibility.  
+**Idea:** Keep a track of gain at every index (gas[i]-cost[i]) add it to the total and tank; if the tank ever goes below 0, make tank = 0 and start = i+1; if total>=0 return start, else -1 || A negative running tank invalidates every start since the previous reset; total gas decides feasibility.  
 **Time:** O(n) **Space:** O(1)
 
 ```java
