@@ -530,7 +530,7 @@ class Solution {
 }
 ```
 
-OR - O((n−m+1)⋅m) = O(nm) | O(nm)
+OR - Time complexity - O((n−m+1)⋅m) = O(nm) | Space complexity - O(m)
 
 ```java
 class Solution {
