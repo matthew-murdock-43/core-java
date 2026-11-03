@@ -231,31 +231,9 @@ Then I'd proactively mention two remaining trade-offs: HLL's approximate nature 
 
 The article covers several of the right ideas, including sharding, HLL, sliding windows, and WebSocket fan-out.&#x20;
 
-[image](https://www.google.com/s2/favicons?domain=https://medium.com\&sz=32)
-
-Medium
-
-
-
 However, as an interviewer, I'd expect a candidate to justify the data structures, explain the accuracy model, distinguish logical shards from physical nodes, and reason about Redis Cluster restrictions and failure scenarios.
 
-Architecture fundamentals
-
-Strong
-
-Scalability reasoning
-
-Good
-
-Correctness and trade-offs
-
-Needs depth
-
-Failure handling
-
-Needs depth
-
-Qualitative interview assessment, not measured performance scores.
+<img width="758" height="210" alt="image" src="https://github.com/user-attachments/assets/c4ff1690-36f5-4470-9a7b-5d2e9d876683" />
 
 The most valuable next step is to practice this interactively. I'll act as the interviewer, challenge your assumptions, and introduce constraints as you progress.
 
