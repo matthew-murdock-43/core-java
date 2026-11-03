@@ -52,37 +52,7 @@ That distinction is worth explaining to the interviewer.
 
 Let's assume:
 
-Interactive capacity estimation
-
-Concurrent viewers
-
-100M
-
-Heartbeat interval
-
-30s
-
-Counter refresh interval
-
-2s
-
-Heartbeat requests / second
-
-# 3.33M
-
-Broadcast messages / second
-
-# 50.0M
-
-Ingest traffic at 200 B / request
-
-## 667 MB/s
-
-Broadcast traffic at 100 B / message
-
-## 5.0 GB/s
-
-Illustrative application payload volumes, excluding transport overhead, replication, retries and peak headroom.
+<img width="754" height="484" alt="image" src="https://github.com/user-attachments/assets/551cd30c-ec97-4208-a5ba-1665ed311998" />
 
 At our baseline assumptions, we need to handle approximately 3.33 million heartbeat requests per second and 50 million counter deliveries per second.
 
