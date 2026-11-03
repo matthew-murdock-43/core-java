@@ -80,47 +80,7 @@ I'd explain these limitations before introducing a more distributed architecture
 
 My next step would be to separate the system into three paths: ingestion, counting, and distribution.
 
-Global clients
-
-100M concurrent viewers
-
-Regional load balancers + API gateways
-
-US
-
-Ingestion fleet
-
-Europe
-
-Ingestion fleet
-
-Asia
-
-Ingestion fleet
-
-Partitioned Kafka event stream
-
-Key: streamId + userId
-
-Stateful stream processing
-
-Deduplication, expiration, partial counts
-
-Global counter aggregator
-
-Merge regional / partitioned results
-
-Redis / counter snapshot cache
-
-Latest published count and timestamp
-
-Regional fan-out gateways
-
-WebSocket / SSE
-
-Connected viewers
-
-Receive count updates every 2 seconds
+<img width="603" height="728" alt="image" src="https://github.com/user-attachments/assets/b1a2e13c-cca7-453e-a571-dd6014bdfecc" />
 
 This is a possible architecture, not the only valid one. In particular, Kafka and stateful stream processing are justified when we need durable ingestion, replay, and recovery. A simpler Redis-based design could also meet the requirements.
 
@@ -147,33 +107,7 @@ Assume:
 - Each bucket represents 10 seconds.
 - A new count is calculated every 2 seconds.
 
-Example: 90-second activity window
-
-1
-
-2
-
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-9
-
-Oldest bucketNewest bucket
-
-Earlier activity
-
-Recent activity
-
-Each bucket stores an HLL of distinct user IDs seen during that interval. We merge the buckets overlapping the activity window to estimate unique viewers.
+<img width="747" height="221" alt="image" src="https://github.com/user-attachments/assets/5cac1def-aca4-4ffa-b3d1-e61106bcd10a" />
 
 For each heartbeat:
 
