@@ -64,17 +64,7 @@ We should design those paths separately.
 
 In an interview, I'd first propose the simplest possible solution.
 
-Clients
-
-Send heartbeats every 30s
-
-Load Balancer
-
-Heartbeat API servers
-
-Redis
-
-Track active users with TTL
+<img width="756" height="372" alt="image" src="https://github.com/user-attachments/assets/16e1e819-90bf-40ed-a076-88e184ca49a4" />
 
 Each heartbeat updates the user's last-seen timestamp. A background process counts users whose last heartbeat is within the activity window.
 
