@@ -152,7 +152,7 @@ Each logical shard maintains its own time-bucket HLLs.
 
 At 3.33M heartbeats/second:
 
-\\[ \frac{3{,}330{,}000}{1000}=3330 \\]
+<img width="161" height="70" alt="image" src="https://github.com/user-attachments/assets/31e58dc8-5abe-4c29-9152-8a3d9c258e51" />
 
 That's approximately 3,330 updates per logical shard per second on average.
 
